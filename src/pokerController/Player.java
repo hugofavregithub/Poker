@@ -7,4 +7,12 @@ public class Player {
     private List<Card> hand;
     private int stack;
     
+
+    public Player(String name, List<Card> hand, int stack){
+        this.hand = hand;
+        this.name = name;
+        this.stack = stack;
+    }
+
+    
 }

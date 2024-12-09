@@ -41,13 +41,33 @@ public class Card implements Comparable<Card>{
 
     @Override
     public int hashCode(){
-        
+        if (this.value == "V"){
+            return 11;
+        }
+        if (this.value == "D"){
+            return 12;
+        }
+        if (this.value == "R"){
+            return 13;
+        }
+        if (this.value == "1"){
+            return 14;
+        }
+        else{
+            return Integer.parseInt(this.value);
+        }
     }
 
     @Override
     public int compareTo(Card otherCard){
         if(this.equals(otherCard)){
             return 0;
+        }
+        if (this.hashCode() < otherCard.hashCode()){
+            return -1;
+        }
+        else{
+            return 1;
         }
         
     }
