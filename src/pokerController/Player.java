@@ -14,5 +14,8 @@ public class Player {
         this.stack = stack;
     }
 
+    public List<Card> getHand(){
+        return this.hand;
+    }
     
 }
