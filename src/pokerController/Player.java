@@ -14,8 +14,22 @@ public class Player {
         this.stack = stack;
     }
 
+<<<<<<< HEAD
     public List<Card> getHand(){
         return this.hand;
     }
+=======
+
+    public void setHand(List<Card> hand) {
+        this.hand = hand;
+    }
+
+
+    public void setStack(int stack) {
+        this.stack = stack;
+    }
+
+    
+>>>>>>> f74ab13 (method of the differents combination possible)
     
 }
