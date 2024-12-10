@@ -36,16 +36,16 @@ public class Card implements Comparable<Card>{
 
     @Override
     public int hashCode(){
-        if (this.value == "V"){
+        if (this.value == "J"){
             return 11;
         }
-        if (this.value == "D"){
+        if (this.value == "Q"){
             return 12;
         }
-        if (this.value == "R"){
+        if (this.value == "K"){
             return 13;
         }
-        if (this.value == "1"){
+        if (this.value == "A"){
             return 14;
         }
         else{

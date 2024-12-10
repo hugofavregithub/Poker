@@ -40,7 +40,7 @@ public class WinnerMain{
         for (Card card : bestJules) {
             System.out.println(card.getColor() + " " + card.getValue());
         }
-        for (Card card : bestJules) {
+        for (Card card : bestLoic) {
             System.out.println(card.getColor() + " " + card.getValue());
         }
     }

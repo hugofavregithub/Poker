@@ -105,14 +105,16 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
         res[0] = "Y";
         res[1] = combinationPlayer.getLast().getValue();
         for (int i = 0; i < this.combinationPlayer.size() - 1; i++){
-            if(this.combinationPlayer.get(i).hashCode() != this.combinationPlayer.get(i + 1).hashCode() + 1){
+            Card currentCard = this.combinationPlayer.get(i);
+            Card nextCard = this.combinationPlayer.get(i + 1);
+            if(currentCard.hashCode() + 1 != nextCard.hashCode()){
                 res[0] = "N";
             }
         }
         if(res[0] == "N" && this.combinationPlayer.getLast().getValue() == "A"){
             res[0] = "Y";
-            ArrayList<Card> newCombination = new ArrayList<>();
-            newCombination = (ArrayList<Card>) this.combinationPlayer.subList(1, this.combinationPlayer.size());
+            List<Card> newCombination = new ArrayList<>();
+            newCombination = this.combinationPlayer.subList(1, this.combinationPlayer.size());
             newCombination.addFirst(this.combinationPlayer.getLast());
             res[1] = "5";
             if(this.combinationPlayer.get(1).hashCode() != 2){
@@ -156,13 +158,13 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
         if(straightFlush[0] == "Y"){
             Card card = new Card(straightFlush[2], straightFlush[1]);
             int factor = card.hashCode();
-            res += factor * (Math.pow(15.0, 15.0));
+            res += factor * Math.pow(15.0, 15.0);
         }
 
         if(quads[0] == "Y"){
             Card card = new Card("S",quads[1]);
             int factor = card.hashCode();
-            res += factor * (Math.pow(15.0,14.0));
+            res += factor * Math.pow(15.0,14.0);
         }
 
         if(fullHouse[0] == "Y"){
@@ -205,11 +207,11 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
             res += factor * Math.pow(15.0, 6.0);
         }
 
-        double i = 5.0;
+        double i = 1.0;
         for (Card card : this.combinationPlayer) {
             int factor = card.hashCode();
             res += factor * Math.pow(15.0, i);
-            i -= 1.0;
+            i += 1.0;
         }
 
         return res;
@@ -229,7 +231,7 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
 
     @Override
     public int compareTo(Combination otherCombination){
-        if(this.equals(otherCombination)){
+        if(this.hashCode() == otherCombination.hashCode()){
             return 0;
         }
         if(this.hashCode() < otherCombination.hashCode()){
