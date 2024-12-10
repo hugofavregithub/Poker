@@ -1,5 +1,6 @@
 package pokerController;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -104,8 +105,23 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
         res[0] = "Y";
         res[1] = combinationPlayer.getLast().getValue();
         for (int i = 0; i < this.combinationPlayer.size() - 1; i++){
-            if(this.combinationPlayer.get(i).hashCode() != this.combinationPlayer.get(i + 1).hashCode()){
+            if(this.combinationPlayer.get(i).hashCode() != this.combinationPlayer.get(i + 1).hashCode() + 1){
                 res[0] = "N";
+            }
+        }
+        if(res[0] == "N" && this.combinationPlayer.getLast().getValue() == "A"){
+            res[0] = "Y";
+            ArrayList<Card> newCombination = new ArrayList<>();
+            newCombination = (ArrayList<Card>) this.combinationPlayer.subList(1, this.combinationPlayer.size());
+            newCombination.addFirst(this.combinationPlayer.getLast());
+            res[1] = "5";
+            if(this.combinationPlayer.get(1).hashCode() != 2){
+                res[0] = "N";
+            }
+            for (int i = 1; i < this.combinationPlayer.size() - 1; i++){
+                if(this.combinationPlayer.get(i).hashCode() != this.combinationPlayer.get(i + 1).hashCode() + 1){
+                    res[0] = "N";
+                }
             }
         }
         return res;
