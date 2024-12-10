@@ -33,6 +33,7 @@ public class Game{
 
         // Can we sort the array with Comparable<Combination>?
         Collections.sort(combinations);
+        return combinations.getLast();
     }
 
     public Player winningPlayer(){
