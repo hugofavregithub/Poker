@@ -9,18 +9,13 @@ public class Card implements Comparable<Card>{
         this.value = value;
     }
 
-
     public String getColor() {
         return color;
     }
 
-
-
     public String getValue() {
         return value;
     }
-
-
 
     @Override
     public boolean equals(Object o){
