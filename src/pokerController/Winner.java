@@ -7,9 +7,9 @@ import java.util.TreeMap;
 public class Winner{
 
     private List<Player> players;
-    private List<Card> board;
+    private Board board;
 
-    public Winner(List<Player> players, List<Card> board){
+    public Winner(List<Player> players, Board board){
         this.players = players;
         this.board = board;
     }
@@ -17,7 +17,9 @@ public class Winner{
     public Combination bestCombination(Player player){
         // In order to get combinations, the list of all combinations,
         List<Card> allCards = new ArrayList<Card>();
-        allCards.addAll(board);
+        for (Card card : board) {
+            allCards.add(card);
+        }
         allCards.addAll(player.getHand());
 
         List<Combination> combinations =  new ArrayList<Combination>();

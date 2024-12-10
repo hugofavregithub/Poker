@@ -12,7 +12,7 @@ public class Deck implements Iterable<Card>{
     
     private List<Card> deck;
 
-    public Deck() throws FileNotFoundException, IOException{
+    public Deck(boolean shuffled) throws FileNotFoundException, IOException{
 
         List<Card> deck = new ArrayList<Card>();
 
@@ -25,7 +25,9 @@ public class Deck implements Iterable<Card>{
         }
         in.close();
 
-        Collections.shuffle(deck);
+        if(shuffled){
+            Collections.shuffle(deck);
+        }
         this.deck = deck;
     }
 

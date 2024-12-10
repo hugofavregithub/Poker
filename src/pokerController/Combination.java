@@ -1,14 +1,19 @@
 package pokerController;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-public class Combination implements Comparable<Combination>{
+public class Combination implements Comparable<Combination>, Iterable<Card>{
     private List<Card> combinationPlayer;
     
     public Combination(List<Card> combinationPlayer){
         this.combinationPlayer = combinationPlayer;
         Collections.sort(combinationPlayer);
+    }
+
+    public Iterator<Card> iterator(){
+        return combinationPlayer.iterator();
     }
 
     public String[] pair(){
