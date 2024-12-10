@@ -27,18 +27,19 @@ public class Game{
                 current.addAll(allCards);
                 current.remove(i);
                 current.remove(j);
-                combinations.add(current);
+                combinations.add(new Combination(current));
             }
         }
 
+        // Can we sort the array with Comparable<Combination>?
         Collections.sort(combinations);
     }
 
     public Player winningPlayer(){
-        TreeMap<Player,Combination> bestCombinations = new TreeMap<Player, Combination>();
+        TreeMap<Combination, Player> bestCombinations = new TreeMap<Combination, Player>();
         for (Player player : players) {
-            bestCombinations.put(player.bestCombination(), player);
+            bestCombinations.put(bestCombination(player), player);
         }
-        return bestCombinations.get(lastKey());
+        return bestCombinations.get(bestCombinations.lastKey());
     }
 }
