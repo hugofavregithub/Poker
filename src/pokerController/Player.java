@@ -18,6 +18,14 @@ public class Player {
         return this.hand;
     }
 
+    public int getStack(){
+        return this.stack;
+    } 
+    
+    public String getName(){
+        return this.name;
+    }
+    
     public void setHand(List<Card> hand) {
         this.hand = hand;
     }
