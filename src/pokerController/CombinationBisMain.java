@@ -1,6 +1,7 @@
 package pokerController;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CombinationBisMain {
 
@@ -8,8 +9,8 @@ public class CombinationBisMain {
 
         List<Card> combinationPlayer = new ArrayList<Card>();
         combinationPlayer.add(new Card("H", "6"));
-        combinationPlayer.add(new Card("H", "3"));
-        combinationPlayer.add(new Card("H", "4"));
+        combinationPlayer.add(new Card("H", "6"));
+        combinationPlayer.add(new Card("H", "10"));
         combinationPlayer.add(new Card("H", "5"));
         combinationPlayer.add(new Card("H", "7"));
         Combination combination = new Combination(combinationPlayer);
@@ -62,6 +63,48 @@ public class CombinationBisMain {
         String[] str7 = combination.pair();
         System.out.print("Testing for one or multiple pairs: ");
         System.out.println("[" + str7[0] + ", " + str7[1] + ", " + str7[2] + ", " + str7[3] + "]");
+
+        // Getting the hashcode of the combination
+        System.out.println("Getting the hashArray of the combination 1 : " + Arrays.toString(combination.getHashArray()));
+        System.out.println("Getting the hashcode of the combination 1 : " + combination.hashCode());
+
+        List<Card> combinationPlayer2 = new ArrayList<Card>();
+        combinationPlayer2.add(new Card("H", "6"));
+        combinationPlayer2.add(new Card("H", "6"));
+        combinationPlayer2.add(new Card("S", "10"));
+        combinationPlayer2.add(new Card("H", "5"));
+        combinationPlayer2.add(new Card("H", "7"));
+        Combination combination2 = new Combination(combinationPlayer2);
+        System.out.println("Getting the hashcode of the combination 2 : " + combination2.hashCode());
+
+
+        List<Card> combinationPlayer3 = new ArrayList<Card>();
+        combinationPlayer3.add(new Card("H", "6"));
+        combinationPlayer3.add(new Card("H", "7"));
+        combinationPlayer3.add(new Card("H", "10"));
+        combinationPlayer3.add(new Card("H", "8"));
+        combinationPlayer3.add(new Card("H", "9"));
+        Combination combination3 = new Combination(combinationPlayer3);
+        System.out.println("Getting the hashcode of the combination 3 : " + combination3.hashCode());
+
+
+        List<Card> combinationPlayer4 = new ArrayList<Card>();
+        combinationPlayer4.add(new Card("H", "6"));
+        combinationPlayer4.add(new Card("D", "6"));
+        combinationPlayer4.add(new Card("S", "6"));
+        combinationPlayer4.add(new Card("C", "6"));
+        combinationPlayer4.add(new Card("H", "7"));
+        Combination combination4 = new Combination(combinationPlayer4);
+        System.out.println("Getting the hashcode of the combination 4 : " + combination4.hashCode());
+
+        List<Card> combinationPlayer5 = new ArrayList<Card>();
+        combinationPlayer5.add(new Card("H", "6"));
+        combinationPlayer5.add(new Card("D", "6"));
+        combinationPlayer5.add(new Card("S", "6"));
+        combinationPlayer5.add(new Card("C", "7"));
+        combinationPlayer5.add(new Card("H", "7"));
+        Combination combination5 = new Combination(combinationPlayer5);
+        System.out.println("Getting the hashcode of the combination 5 : " + combination5.hashCode());
     }
 }
 
