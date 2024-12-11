@@ -194,73 +194,40 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
     public int[] getHashArray(){
         int[] res = new int[14];
         if(this.straightFlush()[0]=="Y"){
-            res[0] = Integer.parseInt(this.straightFlush()[1]);
+            res[0] = (new Card("S",this.straightFlush()[1])).hashCode();
         }
         if(this.quad()[0] == "Y"){
-            res[1] = Integer.parseInt(this.quad()[1]);
+            res[1] = (new Card("S",this.quad()[1])).hashCode();
         }
         if(this.fullHouse()[0]=="Y"){
-            res[2] = Integer.parseInt(this.fullHouse()[1]);
-            res[3] = Integer.parseInt(this.fullHouse()[2]);
+            res[2] = (new Card("S",this.fullHouse()[1])).hashCode();
+            res[3] = (new Card("S",this.fullHouse()[2])).hashCode();
         }
         if(this.flush()[0] == "Y"){
-            res[4] = Integer.parseInt(this.flush()[2]);
+            res[4] = (new Card("S",this.flush()[2])).hashCode();
         }
         if(this.straight()[0] == "Y"){
-            res[5] = Integer.parseInt(this.straight()[1]);
+            res[5] = (new Card("S",this.straight()[1])).hashCode();
         }
         if(this.set()[0] == "Y"){
-            res[6] = Integer.parseInt(this.set()[1]);
+            res[6] = (new Card("S",this.set()[1])).hashCode();
         }
         if(this.pair()[0] == "Y"){
             if(this.pair()[1] == "2"){
-                res[7] = Integer.parseInt(this.pair()[3]);
+                res[7] = (new Card("S", this.pair()[3])).hashCode();
             }
             else{
                 res[7] = 0;
             }
-            res[8] = Integer.parseInt(this.pair()[2]);
+            res[8] = (new Card("S", this.pair()[2])).hashCode();
         }
         int i = 0;
         for (Card card : this) {
-            res[13-i] = Integer.parseInt(card.getValue());
+            res[13-i] = card.hashCode();
             i += 1;
         }
         return res;
     }
-
-    /**
-     * Evaluation of this combination
-     * 
-     * @return Integer representing the value of the combination.
-     */
-    @Override
-    public int hashCode(){
-        int res = 0;
-        for (int i=0; i<14; i++){
-            res += Math.pow(this.getHashArray()[i], 13-i);
-        }
-        return res;
-    }
-
-
-    /**
-     * Determined if two combination are equals
-     * 
-     * @return a boolean representing if the 2 combinations are equal or not.
-     */
-    @Override
-    public boolean equals(Object o){
-        if(o == this){
-            return true;
-        }
-        if(!(o instanceof Combination)){
-            return false;
-        }
-        Combination combination = (Combination) o;
-        return combination.hashCode() == this.hashCode();
-    }
-
 
     /**
      * Compare 2 combinations
@@ -269,17 +236,21 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
      * -1 if this combination is lowest than the other. 0 if there are equal. 1 otherwise.
      */
 
-    @Override
     public int compareTo(Combination otherCombination){
-        if(this.hashCode() == otherCombination.hashCode()){
-            return 0;
+        int res=0;
+        int[] hash = this.getHashArray();
+        int[] otherHash = otherCombination.getHashArray();
+        for(int i=0; i<13; i++){
+            if(hash[i]>otherHash[i]){
+                res = 1;
+                break;
+            }
+            else if(hash[i]<otherHash[i]){
+                res = -1;
+                break;
+            }
         }
-        if(this.hashCode() < otherCombination.hashCode()){
-            return -1;
-        }
-        else{
-            return 1;
-        }
+        return res;
     }
 
 
