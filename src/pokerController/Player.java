@@ -30,7 +30,6 @@ public class Player {
         this.hand = hand;
     }
 
-
     public void setStack(int stack) {
         this.stack = stack;
     }
