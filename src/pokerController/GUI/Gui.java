@@ -27,7 +27,7 @@ public class Gui extends JFrame {
 
         // Création d'un bouton
         JButton button = new JButton("Jouer");
-        button.setBounds(0, 0, 150, 40); // Position et taille du bouton
+        button.setBounds(0100, 0, 150, 40); // Position et taille du bouton
 
         // Ajouter un écouteur d'événements au bouton
         button.addActionListener(new ActionListener() {
