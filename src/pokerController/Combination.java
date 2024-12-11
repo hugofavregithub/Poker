@@ -5,18 +5,34 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Class representing combination of cards and evaluates them.
+ */
+
 public class Combination implements Comparable<Combination>, Iterable<Card>{
+    /** List of 5 cards representing combination */
     private List<Card> combinationPlayer;
     
     public Combination(List<Card> combinationPlayer){
         this.combinationPlayer = combinationPlayer;
-        Collections.sort(combinationPlayer);
+        Collections.sort(combinationPlayer); //We sort cards.
     }
 
+    /**
+     * Method to make this class iterable
+     * 
+     * @return iterable list
+     */
     public Iterator<Card> iterator(){
         return combinationPlayer.iterator();
     }
 
+    /**
+     * Determined if there is a pair or double pair
+     * 
+     * @return an array of 4 strings. 1st is "Y" if there is a pair "N" otherwise.
+     * 2nd is the number of pair. 3rd is the value of the strongest pair. 4th is the value of the second pair or null.
+     */
     public String[] pair(){
         String[] res = new String[4];
         res[0] = "N";
@@ -25,7 +41,7 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
         int count = 0;
         for(int i = 0; i < this.combinationPlayer.size() - 1; i++){
             if(this.combinationPlayer.get(i).getValue() == this.combinationPlayer.get(i + 1).getValue()){
-                if((quad[0] == "N" || quad[1] != this.combinationPlayer.get(i).getValue()) && (set[0] == "N" || set[1] != this.combinationPlayer.get(i).getValue())){
+                if((quad[0] == "N" || quad[1] != this.combinationPlayer.get(i).getValue()) && (set[0] == "N" || set[1] != this.combinationPlayer.get(i).getValue())){ //verified that it's just a pair and no set or quad
                     count += 1;
                     if(count == 1){
                         res[0] = "Y";
@@ -45,6 +61,11 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
         return res;
     }
 
+    /**
+     * Determined if there is a set
+     * 
+     * @return An array of Strings. 1st is "Y" or "N" if there is a set or no. 2nd is the value of set.
+     */
     public String[] set(){
         String[] res = new String[2];
         res[0] = "N";
@@ -60,6 +81,11 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
         return res;
     }
 
+    /**
+     * Determined if there is a quad.
+     * 
+     * @return An array of Strings. 1st is "Y" or "N" if there is a quad or no. 2nd is the value of quad. 
+     */
     public String[] quad(){
         String[] res = new String[2];
         res[0] = "N";
@@ -72,6 +98,12 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
         return res;
     }
 
+    /**
+     * Determined if there is a flush.
+     * 
+     * @return An array of Strings. 1st is "Y" or "N" if there is a flush or no. 2nd is the color of the flush. 
+     * 3rd is the value of the stronger card of the flush.
+     */
     public String[] flush(){
         String[] res = new String[3];
         res[0] = "Y";
@@ -87,19 +119,35 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
         return res;
     }
 
+    /**
+     * Determined if there is a full house.
+     * 
+     * @return An array of Strings. 1st is "Y" or "N" if there is a full house or no. 2nd is the value of the set. 
+     * 3rd is the value of the pair.
+     */
     public String[] fullHouse(){
         String[] res = new String[3];
         res[0] = "N";
         String[] set = this.set();
-        String[] pair = this.pair();
-        if (set[0] == "Y" && pair[0] == "Y"){
-            res[0] = "Y";
-            res[1] = set[1];
-            res[2] = pair[1];
+        if(set[0] == "Y"){
+            for (int i = 0; i < this.combinationPlayer.size() - 1; i++) {
+                if(this.combinationPlayer.get(i).getValue() != set[1]){ // if I don't look a card of the set
+                    if(this.combinationPlayer.get(i) == this.combinationPlayer.get(i + 1)){ //if this card is equal to the next one
+                        res[0] = "Y";
+                        res[1] = set[1];
+                        res[2] = this.combinationPlayer.get(i).getValue();
+                    }
+                }
+            }
         }
         return res;
     }
 
+    /**
+     * Determined if there is a straight.
+     * 
+     * @return An array of Strings. 1st is "Y" or "N" if there is a straight or no. 2nd is the strongest card of the straight.
+     */
     public String[] straight(){
         String[] res = new String[2];
         res[0] = "Y";
@@ -111,7 +159,7 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
                 res[0] = "N";
             }
         }
-        if(res[0] == "N" && this.combinationPlayer.getLast().getValue() == "A"){
+        if(res[0] == "N" && this.combinationPlayer.getLast().getValue() == "A"){ //Case of Ace can be 1.
             res[0] = "Y";
             List<Card> newCombination = new ArrayList<>();
             newCombination = this.combinationPlayer.subList(1, this.combinationPlayer.size());
@@ -129,6 +177,13 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
         return res;
     }
 
+
+    /**
+     * Determined if there is a straight flush.
+     * 
+     * @return An array of Strings. 1st is "Y" or "N" if there is a straight flush or no. 2nd is the value of the straight stronger card. 
+     * 3rd is the color of the flush.
+     */
     public String[] straightFlush(){
         String[] res = new String[3];
         res[0] = "N";
@@ -142,7 +197,11 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
         return res;
     }
 
-
+    /**
+     * Evaluation of this combination
+     * 
+     * @return Integer representing the value of the combination.
+     */
     @Override
     public int hashCode(){
         String[] straightFlush = this.straightFlush();
@@ -198,7 +257,10 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
             Card strongerCard = new Card("S", pair[3]);
             int strongFactor = strongerCard.hashCode();
             int lowFactor = lowestCard.hashCode();
+            System.out.println("factor : " + strongFactor + ", " + lowFactor);
+            System.out.println("res before " + res);
             res += (strongFactor * Math.pow(15.0, 8.0)) + (lowFactor * Math.pow(15.0, 7.0));
+            System.out.println("res after " + res);
         }
 
         if(pair[0] == "Y" && Integer.parseInt(pair[1]) == 1){
@@ -207,16 +269,24 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
             res += factor * Math.pow(15.0, 6.0);
         }
 
+        System.out.println("res before kickers " + res);
         double i = 1.0;
         for (Card card : this.combinationPlayer) {
             int factor = card.hashCode();
             res += factor * Math.pow(15.0, i);
             i += 1.0;
         }
+        System.out.println("res after kickers " + res);
 
         return res;
     }
 
+
+    /**
+     * Determined if two combination are equals
+     * 
+     * @return a boolean representing if the 2 combinations are equal or not.
+     */
     @Override
     public boolean equals(Object o){
         if(o == this){
@@ -229,6 +299,13 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
         return combination.hashCode() == this.hashCode();
     }
 
+
+    /**
+     * Compare 2 combinations
+     * 
+     * @return An integer representing if this combination is stronger or not than an other combination.
+     * -1 if this combination is lowest than the other. 0 if there are equal. 1 otherwise.
+     */
     @Override
     public int compareTo(Combination otherCombination){
         if(this.hashCode() == otherCombination.hashCode()){

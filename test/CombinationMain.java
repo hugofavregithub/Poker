@@ -7,6 +7,7 @@ import pokerController.Card;
 
 public class CombinationMain {
     public static void main(String[] args) {
+        System.out.println((11 * Math.pow(15.0, 8.0)) + (2 * Math.pow(15.0, 7.0)));
         ArrayList<Card> listOfCard = new ArrayList<>();
         listOfCard.add(new Card("H", "5"));
         listOfCard.add(new Card("S", "5"));
