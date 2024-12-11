@@ -1,27 +1,33 @@
 package pokerController;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 public class CombinationBisMain {
-    
+
     public static void main(String[] args) {
 
         List<Card> combinationPlayer = new ArrayList<Card>();
-        combinationPlayer.add(new Card("D", "3"));
-        combinationPlayer.add(new Card("S", "3"));
         combinationPlayer.add(new Card("H", "6"));
-        combinationPlayer.add(new Card("S", "6"));
-        combinationPlayer.add(new Card("C", "6"));
+        combinationPlayer.add(new Card("H", "3"));
+        combinationPlayer.add(new Card("H", "4"));
+        combinationPlayer.add(new Card("H", "5"));
+        combinationPlayer.add(new Card("H", "7"));
         Combination combination = new Combination(combinationPlayer);
 
-        // Testing we get the right order.
-        for (Card card : combination) {
-            System.out.print(card.getColor() + " " + card.getValue() + ", ");
-        }
-        System.out.println("");
+        // Testing we get the right Combination
+        System.out.print("[");
+        System.out.print(combinationPlayer.get(0).getValue() + " " + combinationPlayer.get(0).getColor());
+        System.out.print(", ");
+        System.out.print(combinationPlayer.get(1).getValue() + " " + combinationPlayer.get(1).getColor());
+        System.out.print(", ");
+        System.out.print(combinationPlayer.get(2).getValue() + " " + combinationPlayer.get(2).getColor());
+        System.out.print(", ");
+        System.out.print(combinationPlayer.get(3).getValue() + " " + combinationPlayer.get(3).getColor());
+        System.out.print(", ");
+        System.out.print(combinationPlayer.get(4).getValue() + " " + combinationPlayer.get(4).getColor());
+        System.out.println("]");
 
-        // Testing we get the right combination.
-
+        
         // Testing for a straightFlush.
         String[] str1 = combination.straightFlush();
         System.out.print("Testing for a straight flush: ");
@@ -58,3 +64,4 @@ public class CombinationBisMain {
         System.out.println("[" + str7[0] + ", " + str7[1] + ", " + str7[2] + ", " + str7[3] + "]");
     }
 }
+

@@ -151,7 +151,6 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
     public String[] straight(){
         String[] res = new String[2];
         res[0] = "Y";
-        res[1] = combinationPlayer.getLast().getValue();
         for (int i = 0; i < this.combinationPlayer.size() - 1; i++){
             Card currentCard = this.combinationPlayer.get(i);
             Card nextCard = this.combinationPlayer.get(i + 1);
@@ -159,6 +158,9 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
                 res[0] = "N";
                 break;
             }
+        }
+        if(res[0] == "Y"){
+            res[1] = combinationPlayer.getLast().getValue();
         }
         if(res[0] == "N" && this.combinationPlayer.getLast().getValue() == "A"){ //Case of Ace can be 1.
             if(combinationPlayer.get(0).getValue() == "2" && combinationPlayer.get(1).getValue() == "3" && combinationPlayer.get(2).getValue() == "4" && combinationPlayer.get(3).getValue() == "5"){
