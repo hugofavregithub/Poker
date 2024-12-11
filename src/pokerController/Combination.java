@@ -1,6 +1,5 @@
 package pokerController;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -69,12 +68,11 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
     public String[] set(){
         String[] res = new String[2];
         res[0] = "N";
-        String[] quad = this.quad();
         for(int i = 0; i < this.combinationPlayer.size() - 2; i++){
             if(this.combinationPlayer.get(i).getValue() == this.combinationPlayer.get(i + 1).getValue() && this.combinationPlayer.get(i).getValue() == this.combinationPlayer.get(i + 2).getValue()){
-                if(quad[0] == "N" || quad[1] != this.combinationPlayer.get(i).getValue()){
-                    res[0] = "Y";
-                    res[1] = this.combinationPlayer.get(i).getValue();
+                if(this.quad()[0] == "N"){
+                res[0] = "Y";
+                res[1] = this.combinationPlayer.get(i).getValue();
                 }
             }
         }
@@ -108,13 +106,15 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
         String[] res = new String[3];
         res[0] = "Y";
         String color = this.combinationPlayer.get(0).getColor();
-        res[1] = color;
-        String value = this.combinationPlayer.getLast().getValue();
-        res[2] = value;
         for (Card card : combinationPlayer) {
             if(card.getColor() != color){
                 res[0] = "N";
             }
+        }
+        if(res[0] == "Y"){
+            res[1] = color;
+            String value = this.combinationPlayer.getLast().getValue();
+            res[2] = value;
         }
         return res;
     }
@@ -132,7 +132,7 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
         if(set[0] == "Y"){
             for (int i = 0; i < this.combinationPlayer.size() - 1; i++) {
                 if(this.combinationPlayer.get(i).getValue() != set[1]){ // if I don't look a card of the set
-                    if(this.combinationPlayer.get(i) == this.combinationPlayer.get(i + 1)){ //if this card is equal to the next one
+                    if(this.combinationPlayer.get(i).getValue() == this.combinationPlayer.get(i + 1).getValue()){ //if this card is equal to the next one
                         res[0] = "Y";
                         res[1] = set[1];
                         res[2] = this.combinationPlayer.get(i).getValue();
@@ -157,21 +157,13 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
             Card nextCard = this.combinationPlayer.get(i + 1);
             if(currentCard.hashCode() + 1 != nextCard.hashCode()){
                 res[0] = "N";
+                break;
             }
         }
         if(res[0] == "N" && this.combinationPlayer.getLast().getValue() == "A"){ //Case of Ace can be 1.
-            res[0] = "Y";
-            List<Card> newCombination = new ArrayList<>();
-            newCombination = this.combinationPlayer.subList(1, this.combinationPlayer.size());
-            newCombination.addFirst(this.combinationPlayer.getLast());
-            res[1] = "5";
-            if(this.combinationPlayer.get(1).hashCode() != 2){
-                res[0] = "N";
-            }
-            for (int i = 1; i < this.combinationPlayer.size() - 1; i++){
-                if(this.combinationPlayer.get(i).hashCode() != this.combinationPlayer.get(i + 1).hashCode() + 1){
-                    res[0] = "N";
-                }
+            if(combinationPlayer.get(0).getValue() == "2" && combinationPlayer.get(1).getValue() == "3" && combinationPlayer.get(2).getValue() == "4" && combinationPlayer.get(3).getValue() == "5"){
+                res[0] = "Y";
+                res[1] = "5";
             }
         }
         return res;
@@ -306,6 +298,7 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
      * @return An integer representing if this combination is stronger or not than an other combination.
      * -1 if this combination is lowest than the other. 0 if there are equal. 1 otherwise.
      */
+
     @Override
     public int compareTo(Combination otherCombination){
         if(this.hashCode() == otherCombination.hashCode()){
