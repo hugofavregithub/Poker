@@ -12,7 +12,7 @@ public class EvaluateMain{
          
         // First, we create a board, players and then a game.
         Board board = new Board();
-        Deck deck = new Deck(false);
+        Deck deck = new Deck(true);
         int state = 1;
         board.boardUpdate(state, deck);
         state += 1;
@@ -38,12 +38,16 @@ public class EvaluateMain{
         Evaluate game = new Evaluate(players, board);
         System.out.println(game.toString());
 
-        // // Then, we compute all the combination of both players 
-        // List<Combination> allJules = game.allCombinations(Jules);
-        // List<Combination> allLoic = game.allCombinations(Loic);
-
-        // for (Combination combination : allJules) {
-        //     combination.print();
-        // }
+        List<Card> all = new ArrayList<Card>();
+        for (Card card : board) {
+            all.add(card);
+        }
+        for (Card card : julesHand) {
+            all.add(card);
+        }
+        all.remove(0);
+        all.remove(0);
+        Combination combination = new Combination(all);
+        System.out.println(combination.toString());
     }
 }

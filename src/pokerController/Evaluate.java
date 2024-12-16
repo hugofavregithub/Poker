@@ -14,6 +14,24 @@ public class Evaluate{
         this.board = board;
     }
 
+    public List<Card> all(Player player){
+        List<Card> allCards = new ArrayList<Card>();
+        for (Card card : board) {
+            allCards.add(card);
+        }
+        allCards.addAll(player.getHand());
+        return allCards;
+    }
+
+    public List<Card> remove(List<Card> allCards, int i, int j){
+        List<Card> res = new ArrayList<Card>();
+        res.addAll(allCards);
+        res.remove(i);
+        res.remove(j);
+        //Combination ret = new Combination(res);
+        return res;
+    }
+
     public List<Combination> allCombinations(Player player){
         List<Card> allCards = new ArrayList<Card>();
         for (Card card : board) {

@@ -253,11 +253,14 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
         return res;
     }
 
-    public void print(){
-        System.out.print("[");
-        for (Card card : combinationPlayer) {
-            System.out.print(card.getColor() + " " + card.getValue() + ", ");
+    @Override
+    public String toString(){
+        String str = "Combination : [";
+        for (Card card : this) {
+            str += card.cardToString() + ", ";
         }
-        System.out.println("]");
+        str = str.substring(0, str.length()-2);
+        str += "]";
+        return str;
     }
 }
