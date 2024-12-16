@@ -17,19 +17,8 @@ public class CombinationMain {
         Combination combination = new Combination(combinationPlayer);
 
         // Testing we get the right Combination
-        System.out.print("[");
-        System.out.print(combinationPlayer.get(0).getValue() + " " + combinationPlayer.get(0).getColor());
-        System.out.print(", ");
-        System.out.print(combinationPlayer.get(1).getValue() + " " + combinationPlayer.get(1).getColor());
-        System.out.print(", ");
-        System.out.print(combinationPlayer.get(2).getValue() + " " + combinationPlayer.get(2).getColor());
-        System.out.print(", ");
-        System.out.print(combinationPlayer.get(3).getValue() + " " + combinationPlayer.get(3).getColor());
-        System.out.print(", ");
-        System.out.print(combinationPlayer.get(4).getValue() + " " + combinationPlayer.get(4).getColor());
-        System.out.println("]");
+        combination.print();
 
-        
         // Testing for a straightFlush.
         String[] str1 = combination.straightFlush();
         System.out.print("Testing for a straight flush: ");

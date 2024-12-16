@@ -253,5 +253,11 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
         return res;
     }
 
-
+    public void print(){
+        System.out.print("[");
+        for (Card card : combinationPlayer) {
+            System.out.print(card.getColor() + " " + card.getValue() + ", ");
+        }
+        System.out.println("]");
+    }
 }

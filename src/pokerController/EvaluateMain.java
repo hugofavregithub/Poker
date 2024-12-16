@@ -38,17 +38,7 @@ public class EvaluateMain{
         List<Combination> allLoic = game.allCombinations(Loic);
 
         for (Combination combination : allJules) {
-            System.out.print("[");
-        System.out.print(combination.get(0).getValue() + " " + combination.get(0).getColor());
-        System.out.print(", ");
-        System.out.print(combinationPlayer.get(1).getValue() + " " + combinationPlayer.get(1).getColor());
-        System.out.print(", ");
-        System.out.print(combinationPlayer.get(2).getValue() + " " + combinationPlayer.get(2).getColor());
-        System.out.print(", ");
-        System.out.print(combinationPlayer.get(3).getValue() + " " + combinationPlayer.get(3).getColor());
-        System.out.print(", ");
-        System.out.print(combinationPlayer.get(4).getValue() + " " + combinationPlayer.get(4).getColor());
-        System.out.println("]");
+            combination.print();
         }
         // for (Card card : bestJules) {
         //     System.out.println(card.getColor() + " " + card.getValue());
