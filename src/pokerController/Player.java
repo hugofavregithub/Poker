@@ -34,6 +34,13 @@ public class Player {
         this.stack = stack;
     }
 
-    
-    
+    public String handToString(){
+        String str = this.getName() + "'s hand : [";
+        for (Card card : hand) {
+            str = str + card.cardToString() + ", ";
+        }
+        str = str.substring(0, str.length()-2);
+        str += "]";
+        return str;
+    }
 }

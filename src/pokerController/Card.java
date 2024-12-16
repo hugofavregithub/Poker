@@ -17,6 +17,11 @@ public class Card implements Comparable<Card>{
         return value;
     }
 
+    public String cardToString(){
+        String str = this.getColor() + " " + this.getValue();
+        return str;
+    }
+
     @Override
     public boolean equals(Object o){
         if(o == this){

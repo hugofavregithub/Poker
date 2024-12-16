@@ -9,7 +9,8 @@ import java.util.List;
 public class EvaluateMain{
     
     public static void main(String[] args) throws FileNotFoundException, IOException{
-                
+         
+        // First, we create a board, players and then a game.
         Board board = new Board();
         Deck deck = new Deck(false);
         int state = 1;
@@ -17,6 +18,8 @@ public class EvaluateMain{
         state += 1;
         board.boardUpdate(state, deck);  
         state += 1;
+        board.boardUpdate(state, deck);  
+
 
         List<Card> julesHand = new ArrayList<>();
         julesHand.add(new Card("S", "10"));
@@ -34,17 +37,17 @@ public class EvaluateMain{
 
         Evaluate game = new Evaluate(players, board);
 
-        List<Combination> allJules = game.allCombinations(Jules);
-        List<Combination> allLoic = game.allCombinations(Loic);
-
-        for (Combination combination : allJules) {
-            combination.print();
+        for (Player player : players) {
+            System.out.println(player.handToString());
         }
-        // for (Card card : bestJules) {
-        //     System.out.println(card.getColor() + " " + card.getValue());
-        // }
-        // for (Card card : bestLoic) {
-        //     System.out.println(card.getColor() + " " + card.getValue());
+        System.out.println(board.boardToString());;
+
+        // // Then, we compute all the combination of both players 
+        // List<Combination> allJules = game.allCombinations(Jules);
+        // List<Combination> allLoic = game.allCombinations(Loic);
+
+        // for (Combination combination : allJules) {
+        //     combination.print();
         // }
     }
 }

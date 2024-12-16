@@ -41,4 +41,14 @@ public class Board implements Iterable<Card>{
     public void removeFirst(){
         board.removeFirst();
     }
+
+    public String boardToString(){
+        String str = "Board : [";
+        for (Card card : board) {
+            str += card.cardToString() + ", ";
+        }
+        str = str.substring(0, str.length()-2);
+        str += "]";
+        return str;
+    }
 }
