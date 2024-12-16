@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class CombinationBisMain {
+public class CombinationMain {
 
     public static void main(String[] args) {
 
