@@ -42,7 +42,8 @@ public class Board implements Iterable<Card>{
         board.removeFirst();
     }
 
-    public String boardToString(){
+    @Override
+    public String toString(){
         String str = "Board : [";
         for (Card card : board) {
             str += card.cardToString() + ", ";

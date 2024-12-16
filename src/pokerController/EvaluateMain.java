@@ -36,11 +36,7 @@ public class EvaluateMain{
         players.add(Loic);
 
         Evaluate game = new Evaluate(players, board);
-
-        for (Player player : players) {
-            System.out.println(player.handToString());
-        }
-        System.out.println(board.boardToString());;
+        System.out.println(game.toString());
 
         // // Then, we compute all the combination of both players 
         // List<Combination> allJules = game.allCombinations(Jules);

@@ -62,4 +62,15 @@ public class Evaluate{
         }
         return bestCombinations.get(bestCombinations.lastKey());
     }
+
+    @Override
+    public String toString(){
+        String str = "";
+        for (Player player : players) {
+            str += player.toString();
+            str += ", ";
+        }
+        str += board.toString();
+        return str;
+    }
 }

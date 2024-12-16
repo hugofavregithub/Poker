@@ -34,7 +34,8 @@ public class Player {
         this.stack = stack;
     }
 
-    public String handToString(){
+    @Override
+    public String toString(){
         String str = this.getName() + "'s hand : [";
         for (Card card : hand) {
             str = str + card.cardToString() + ", ";
