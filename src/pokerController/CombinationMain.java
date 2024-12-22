@@ -8,28 +8,30 @@ public class CombinationMain {
 
     public static void main(String[] args) {
 
-    List<Card> combinationPlayer = new ArrayList<Card>();
-    combinationPlayer.add(new Card("H", "6"));
-    combinationPlayer.add(new Card("H", "6"));
-    combinationPlayer.add(new Card("H", "Q"));
-    combinationPlayer.add(new Card("H", "5"));
-    combinationPlayer.add(new Card("H", "A"));
-    combinationPlayer.add(new Card("D", "5"));
-    combinationPlayer.add(new Card("S", "A"));
-    List<Card> cards = new ArrayList<Card>();
-    cards.addAll(combinationPlayer);
-    cards.remove(0);
-    cards.remove(0);
-    Combination combination = new Combination(cards);
-    System.out.println(combination.toString());
+        List<Card> combinationPlayer = new ArrayList<Card>();
+        combinationPlayer.add(new Card("H", "6"));
+        combinationPlayer.add(new Card("H", "6"));
+        combinationPlayer.add(new Card("H", "Q"));
+        combinationPlayer.add(new Card("H", "5"));
+        combinationPlayer.add(new Card("H", "A"));
+        combinationPlayer.add(new Card("D", "5"));
+        combinationPlayer.add(new Card("S", "A"));
+        List<Card> cards = new ArrayList<Card>();
+        cards.addAll(combinationPlayer);
+        cards.remove(0);
+        cards.remove(0);
+        Combination combination = new Combination(cards);
+        System.out.println("combination 1 : " + combination.toString());
+        System.out.println("hashArray of combination 1 : " + Arrays.toString(combination.getHashArray()));
 
-    //     List<Card> combinationPlayer = new ArrayList<Card>();
-    //     combinationPlayer.add(new Card("H", "6"));
-    //     combinationPlayer.add(new Card("H", "6"));
-    //     combinationPlayer.add(new Card("H", "Q"));
-    //     combinationPlayer.add(new Card("H", "5"));
-    //     combinationPlayer.add(new Card("H", "7"));
-    //     Combination combination = new Combination(combinationPlayer);
+
+        // List<Card> combinationPlayer = new ArrayList<Card>();
+        // combinationPlayer.add(new Card("H", "6"));
+        // combinationPlayer.add(new Card("H", "6"));
+        // combinationPlayer.add(new Card("H", "Q"));
+        // combinationPlayer.add(new Card("H", "5"));
+        // combinationPlayer.add(new Card("H", "7"));
+        // Combination combination = new Combination(combinationPlayer);
 
     //     // Testing we get the right Combination
     //     System.out.println(combination.toString());;
@@ -72,58 +74,62 @@ public class CombinationMain {
     //     // Getting the hashcode of the combination
     //     System.out.println("hashArray of combination 1 : " + Arrays.toString(combination.getHashArray()));
 
-    //     List<Card> combinationPlayer2 = new ArrayList<Card>();
-    //     combinationPlayer2.add(new Card("H", "6"));
-    //     combinationPlayer2.add(new Card("H", "6"));
-    //     combinationPlayer2.add(new Card("S", "10"));
-    //     combinationPlayer2.add(new Card("H", "5"));
-    //     combinationPlayer2.add(new Card("H", "7"));
-    //     Combination combination2 = new Combination(combinationPlayer2);
-    //     System.out.println("hashArray of combination 2 : " + Arrays.toString(combination2.getHashArray()));
+        List<Card> combinationPlayer2 = new ArrayList<Card>();
+        combinationPlayer2.add(new Card("H", "6"));
+        combinationPlayer2.add(new Card("H", "6"));
+        combinationPlayer2.add(new Card("S", "10"));
+        combinationPlayer2.add(new Card("H", "5"));
+        combinationPlayer2.add(new Card("H", "7"));
+        Combination combination2 = new Combination(combinationPlayer2);
+        System.out.println("combination 2 : " + combination2.toString());
+        System.out.println("hashArray of combination 2 : " + Arrays.toString(combination2.getHashArray()));
 
-    //     List<Card> combinationPlayer3 = new ArrayList<Card>();
-    //     combinationPlayer3.add(new Card("H", "6"));
-    //     combinationPlayer3.add(new Card("D", "6"));
-    //     combinationPlayer3.add(new Card("S", "6"));
-    //     combinationPlayer3.add(new Card("C", "7"));
-    //     combinationPlayer3.add(new Card("H", "7"));
-    //     Combination combination3 = new Combination(combinationPlayer3);
-    //     System.out.println("hashArray of combination 3 : " + Arrays.toString(combination3.getHashArray()));
+        List<Card> combinationPlayer3 = new ArrayList<Card>();
+        combinationPlayer3.add(new Card("H", "6"));
+        combinationPlayer3.add(new Card("D", "6"));
+        combinationPlayer3.add(new Card("S", "6"));
+        combinationPlayer3.add(new Card("C", "7"));
+        combinationPlayer3.add(new Card("H", "7"));
+        Combination combination3 = new Combination(combinationPlayer3);
+        System.out.println("combination 3 : " + combination3.toString());
+        System.out.println("hashArray of combination 3 : " + Arrays.toString(combination3.getHashArray()));
 
-    //     List<Card> combinationPlayer4 = new ArrayList<Card>();
-    //     combinationPlayer4.add(new Card("H", "6"));
-    //     combinationPlayer4.add(new Card("D", "6"));
-    //     combinationPlayer4.add(new Card("S", "6"));
-    //     combinationPlayer4.add(new Card("C", "6"));
-    //     combinationPlayer4.add(new Card("H", "7"));
-    //     Combination combination4 = new Combination(combinationPlayer4);
-    //     System.out.println("hashArray of combination 4 : " + Arrays.toString(combination4.getHashArray()));
+        List<Card> combinationPlayer4 = new ArrayList<Card>();
+        combinationPlayer4.add(new Card("H", "6"));
+        combinationPlayer4.add(new Card("D", "6"));
+        combinationPlayer4.add(new Card("S", "6"));
+        combinationPlayer4.add(new Card("C", "6"));
+        combinationPlayer4.add(new Card("H", "7"));
+        Combination combination4 = new Combination(combinationPlayer4);
+        System.out.println("combination 4 : " + combination4.toString());
+        System.out.println("hashArray of combination 4 : " + Arrays.toString(combination4.getHashArray()));
 
-    //     List<Card> combinationPlayer5 = new ArrayList<Card>();
-    //     combinationPlayer5.add(new Card("H", "10"));
-    //     combinationPlayer5.add(new Card("H", "K"));
-    //     combinationPlayer5.add(new Card("H", "Q"));
-    //     combinationPlayer5.add(new Card("H", "J"));
-    //     combinationPlayer5.add(new Card("H", "A"));
-    //     Combination combination5 = new Combination(combinationPlayer5);
-    //     System.out.println("hashArray of combination 5 : " + Arrays.toString(combination5.getHashArray()));
+        List<Card> combinationPlayer5 = new ArrayList<Card>();
+        combinationPlayer5.add(new Card("H", "10"));
+        combinationPlayer5.add(new Card("H", "K"));
+        combinationPlayer5.add(new Card("H", "Q"));
+        combinationPlayer5.add(new Card("H", "J"));
+        combinationPlayer5.add(new Card("H", "A"));
+        Combination combination5 = new Combination(combinationPlayer5);
+        System.out.println("combination 5 : " + combination5.toString());
+        System.out.println("hashArray of combination 5 : " + Arrays.toString(combination5.getHashArray()));
 
-    //     System.out.println("Comparing combination 1 and 2 : " + combination.compareTo(combination2));
-    //     System.out.println("Comparing combination 2 and 3 : " + combination2.compareTo(combination3));
-    //     System.out.println("Comparing combination 3 and 4 : " + combination3.compareTo(combination4));
-    //     System.out.println("Comparing combination 4 and 5 : " + combination4.compareTo(combination5));
-    //     System.out.println("Comparing combination 3 and 5 : " + combination3.compareTo(combination5));
+        System.out.println("Comparing combination 1 and 2 : " + combination.compareTo(combination2));
+        System.out.println("Comparing combination 2 and 3 : " + combination2.compareTo(combination3));
+        System.out.println("Comparing combination 3 and 4 : " + combination3.compareTo(combination4));
+        System.out.println("Comparing combination 4 and 5 : " + combination4.compareTo(combination5));
+        System.out.println("Comparing combination 3 and 5 : " + combination3.compareTo(combination5));
 
-    //     List<Combination> combinations = new ArrayList<Combination>();
-    //     combinations.add(combination);
-    //     combinations.add(combination2);
-    //     combinations.add(combination3);
-    //     combinations.add(combination4);
-    //     combinations.add(combination5);
-    //     Collections.sort(combinations);
-    //     for (Combination currentCombination : combinations) {
-    //         System.out.println(Arrays.toString(currentCombination.getHashArray()));
-    //     }
+        List<Combination> combinations = new ArrayList<Combination>();
+        combinations.add(combination);
+        combinations.add(combination2);
+        combinations.add(combination3);
+        combinations.add(combination4);
+        combinations.add(combination5);
+        Collections.sort(combinations);
+        for (Combination currentCombination : combinations) {
+            System.out.println(Arrays.toString(currentCombination.getHashArray()));
+        }
     }
 }
 

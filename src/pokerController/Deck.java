@@ -20,7 +20,7 @@ public class Deck implements Iterable<Card>{
         while(in.ready()){
             String str = in.readLine();
             String[] inter = str.split(" ");
-            Card card = new Card(inter[0], inter[1]);
+            Card card = new Card(inter[0].trim(), inter[1].trim());
             deck.add(card);
         }
         in.close();

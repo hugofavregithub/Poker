@@ -41,17 +41,17 @@ public class Card implements Comparable<Card>{
 
     @Override
     public int hashCode(){
-        if (this.value == "J"){
+        if (this.value.equals("J")){
             return 11;
         }
-        if (this.value == "Q"){
+        if (this.value.equals("Q")){
             return 12;
         }
-        if (this.value == "K"){
+        if (this.value.equals("K")){
             return 13;
         }
-        if (this.value == "A"){
-            return 14;
+        if (this.value.equals("A")){
+            return 14;  
         }
         else{
             return Integer.parseInt(this.value);
@@ -70,6 +70,11 @@ public class Card implements Comparable<Card>{
             return 1;
         }
         
+    }
+
+    @Override
+    public String toString(){
+        return this.color + " " + this.value;
     }
     
 }

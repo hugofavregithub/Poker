@@ -255,7 +255,7 @@ public class Combination implements Comparable<Combination>, Iterable<Card>{
 
     @Override
     public String toString(){
-        String str = "Combination : [";
+        String str = "[";
         for (Card card : this) {
             str += card.cardToString() + ", ";
         }

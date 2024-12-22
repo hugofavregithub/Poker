@@ -44,8 +44,8 @@ public class Evaluate{
             for(int j=i+1; j<7; j++){
                 List<Card> current = new ArrayList<Card>();
                 current.addAll(allCards);
-                current.remove(i);
                 current.remove(j);
+                current.remove(i);
                 combinations.add(new Combination(current));
             }
         }
@@ -64,8 +64,8 @@ public class Evaluate{
             for(int j=i+1; j<7; j++){
                 List<Card> current = new ArrayList<Card>();
                 current.addAll(allCards);
-                current.remove(i);
                 current.remove(j);
+                current.remove(i);
                 combinations.add(new Combination(current));
             }
         }

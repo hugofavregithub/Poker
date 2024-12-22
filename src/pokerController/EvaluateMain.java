@@ -38,7 +38,7 @@ public class EvaluateMain{
         Evaluate game = new Evaluate(players, board);
         System.out.println(game.toString());
 
-        List<Card> all = new ArrayList<Card>();
+        ArrayList<Card> all = new ArrayList<Card>();
         for (Card card : board) {
             all.add(card);
         }
@@ -49,5 +49,16 @@ public class EvaluateMain{
         all.remove(0);
         Combination combination = new Combination(all);
         System.out.println(combination.toString());
+
+        List<Combination> julesCombinations = new ArrayList<>();
+        julesCombinations = game.allCombinations(Jules);
+        System.out.println(julesCombinations.toString());
+
+
+        Combination julesBestCombination = game.bestCombination(Jules);
+        Combination loicBestCombination = game.bestCombination(Loic);
+        System.out.println("Jules's best combination : " + julesBestCombination.toString() + ", Loïc best combination : " + loicBestCombination.toString());
+        Player winner = game.winningPlayer();
+        System.out.println(winner);
     }
 }
