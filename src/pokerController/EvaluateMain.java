@@ -3,7 +3,6 @@ package pokerController;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class EvaluateMain{
